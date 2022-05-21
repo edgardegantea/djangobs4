@@ -1,11 +1,12 @@
 from django.shortcuts import render
+from .models import Contacto
 
 # Create your views here.
 from django.views.generic import TemplateView
 
 
 class IndexView(TemplateView):
-    # model = Cultivos
+    model = Contacto
     template_name = 'index.html'
 
     def get_context_data(self, **kwargs):
