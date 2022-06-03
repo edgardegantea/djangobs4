@@ -1,14 +1,14 @@
 from django.contrib import admin
 from django.urls import path
 
-
-from extractor.views import IndexView, Websites, Website1,Website2,Website3,Politics01,Politics02,Politics03, Sports01, Sports02, Sports03, Culture01, Culture02, Culture03
+from extractor.views import IndexView, Websites, Website1, Website2, Website3, Politics01, Politics02, Politics03, \
+    Sports01, Sports02, Sports03, Culture01, Culture02, Culture03
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('/', IndexView.as_view(), name='index'),
+    path('', IndexView.as_view(), name='index'),
     path('websites/', Websites.as_view(), name='websites'),
     path('website1/', Website1.as_view(), name='el_sol_de_mexico'),
     path('website2/', Website2.as_view(), name='milenio'),
