@@ -67,7 +67,8 @@ class Culture03(TemplateView):
     template_name = 'culture03.html'
 
 
-
+class Prueba(TemplateView):
+    template_name = 'prueba.html'
 
 
 

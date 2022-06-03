@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 
 from extractor.views import IndexView, Websites, Website1, Website2, Website3, Politics01, Politics02, Politics03, \
-    Sports01, Sports02, Sports03, Culture01, Culture02, Culture03
+    Sports01, Sports02, Sports03, Culture01, Culture02, Culture03, Prueba
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -22,6 +22,7 @@ urlpatterns = [
     path('Sports01/', Sports01.as_view(), name='Cultura'),
     path('Sports02/', Sports02.as_view(), name='Cultura'),
     path('Sports03/', Sports03.as_view(), name='Cultura'),
+    path('Prueba/', Prueba.as_view(), name='prueba'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
