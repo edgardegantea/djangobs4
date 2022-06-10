@@ -31,6 +31,10 @@ class Website3(TemplateView):
     template_name = 'website3.html'
 
 
+class Website4(TemplateView):
+    template_name = 'website4.html'
+
+
 class Politics01(TemplateView):
     template_name = 'politics01.html'
 
@@ -69,7 +73,3 @@ class Culture03(TemplateView):
 
 class Prueba(TemplateView):
     template_name = 'prueba.html'
-
-
-
-
