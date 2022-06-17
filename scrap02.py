@@ -6,8 +6,8 @@ from bs4 import BeautifulSoup
 website = 'https://www.elsoldemexico.com.mx'
 result = requests.get(website)
 content = result.text
-soup = BeautifulSoup(content, 'lxml')
-#print(soup.prettify())
+soup = BeautifulSoup(content)
+print(soup.prettify())
 
 
 #noticia 01

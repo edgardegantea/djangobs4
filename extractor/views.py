@@ -1,17 +1,40 @@
 from django.shortcuts import render
 from .models import Contacto
+from bs4 import BeautifulSoup
+import requests
 
 # Create your views here.
 from django.views.generic import TemplateView
 
+# extraer datos de una pagina
+website = 'https://elpais.com/mexico/'
+result = requests.get(website)
+content = result.text
+soup = BeautifulSoup(content, 'lxml')
+
+
+# print(soup.prettify())
+
 
 class IndexView(TemplateView):
     model = Contacto
+    website = 'https://elpais.com/mexico/'
+    result = requests.get(website)
+    content = result.text
+    soup = BeautifulSoup(content, 'lxml')
+    box = soup.find('section', class_='_g _g-md _g-o b b-d b--o')
+    title = box.find('a').get_text()
+    # scrip borra espacios en blanco al inicio y al final de una cadena de texto
+    transcript = box.find('p', class_='c_d').get_text(strip=True, separator=' ')
+
     template_name = 'index.html'
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, t01=title, t02=transcript, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['title'] = 'Extractor de noticias'
+        # context['data'] = soup
+        context['data2'] = t01
+        context['data3'] = t02
         return context
 
 
