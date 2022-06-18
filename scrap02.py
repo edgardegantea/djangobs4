@@ -19,7 +19,7 @@ transcript = box.find('p', class_='extract').get_text(strip=True,separator=' ')
 print(transcript)
 
 
-#noticia 02
+#noticia02
 box = soup.find('h4', class_='title')
 title = box.find('a').get_text()
 print(title)
