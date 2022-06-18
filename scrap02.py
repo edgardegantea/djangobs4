@@ -26,9 +26,3 @@ print(title)
 box = soup.find('article', class_='col-sm-5 hard-news-1')
 transcript = box.find('p', class_='summary').get_text(strip=True,separator=' ')
 print(transcript)
-
-
-
-
-
-
