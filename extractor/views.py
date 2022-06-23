@@ -53,11 +53,9 @@ class Website1(TemplateView):
     # Entrar a seccion que contiene bloques
     layout = soup.find('div', class_="container")
     # print(layout)
-
     # Entrar a seccion que contiene articulos y mostrar su cantidad
     blocks = layout.find_all(class_='stories-list sports-description', recursive=True)
     print(len(blocks))
-
     for block in blocks:
         for href in block.find('a', href=True):
             print('Titulo: ' + href.get_text())
@@ -65,12 +63,10 @@ class Website1(TemplateView):
             Noticia = block.find('p', class_='leadtext').get_text()
             print('Noticia: ' + Noticia)
             print()
-
-    def get_context_data(self, t01=title, t02=transcript, **kwargs):
+            def get_context_data(self,t01=,t02=Noticia, **kwargs):
                 context = super(IndexView, self).get_context_data(**kwargs)
                 context['title'] = 'Extractor de noticias'
-                # context['data'] = soup
-                context['data2'] = t01
+                #context['data2'] = t01
                 context['data3'] = t02
                 return context
 
