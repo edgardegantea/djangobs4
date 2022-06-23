@@ -57,8 +57,8 @@ class Website1(TemplateView):
     blocks = layout.find_all(class_='stories-list sports-description', recursive=True)
     # print(len(blocks))
 
-    href = blocks.find('a', href=True)
-    noticia = blocks.find('p', class_='leadtext')
+    href = blocks.find('a', href=True).get_text()
+    noticia = blocks.find('p', class_='leadtext').get_text()
 
 
 
