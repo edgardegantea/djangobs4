@@ -43,7 +43,22 @@ class Websites(TemplateView):
 
 
 class Website1(TemplateView):
+    website = 'https://www.elsoldemexico.com.mx/mexico/sociedad/'
+    result = requests.get(website)
+    content = result.text
+    soup = BeautifulSoup(content, 'lxml')
+    template_name = 'website1.html'
 
+    def get_context_data(self, soup=soup, **kwargs):
+        context = super(Website1, self).get_context_data(**kwargs)
+        context = {
+            "noticias": soup.find(class_='stories-list sports-description').get_text()
+        }
+        return context
+
+
+
+    '''
     def website1_view(request):
         # create a dictionary
         website = 'https://www.elsoldemexico.com.mx/mexico/sociedad/'
@@ -54,7 +69,8 @@ class Website1(TemplateView):
             "blocks": soup.find(class_='stories-list sports-description').get_text()
         }
         # return response
-        return render(request, "website1.html", context)
+        return render(request, "website1.html", context)'''
+
 
 class Website2(TemplateView):
     template_name = 'website2.html'

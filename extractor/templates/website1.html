@@ -24,12 +24,13 @@
 
                 {% block noticiasextraidas01 %}
                     Noticias extraídas
-                    {% for block in blocks %}
+                    {% for noticia in noticias %}
                         <div class="heading_small">
-                            {{ block }}
+                            {{ noticia }}
                             <tr class="a">
                         </div>
                     {% endfor %}
+                {% endblock %}
 
 
 
