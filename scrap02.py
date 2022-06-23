@@ -2,27 +2,23 @@ import requests
 from bs4 import BeautifulSoup
 
 # extraer datos de una pagina
-
-website = 'https://www.elsoldemexico.com.mx'
+website = 'https://www.elsoldemexico.com.mx/mexico/sociedad/'
 result = requests.get(website)
 content = result.text
-soup = BeautifulSoup(content)
-print(soup.prettify())
+soup = BeautifulSoup(content, 'lxml')
 
+# Entrar a seccion que contiene bloques
+layout = soup.find('div', class_="container")
+# print(layout)
 
-#noticia 01
-box = soup.find('h4', class_='tit-top-story')
-title = box.find('a').get_text()
-print(title)
-box = soup.find('section', class_='mexico_justicia')
-transcript = box.find('p', class_='extract').get_text(strip=True,separator=' ')
-print(transcript)
+# Entrar a seccion que contiene articulos y mostrar su cantidad
+blocks = layout.find_all(class_='stories-list sports-description', recursive=True)
+print(len(blocks))
 
+for block in blocks:
+    for href in block.find('a', href=True):
+        print('Titulo: ' + href.get_text())
 
-#noticia02
-box = soup.find('h4', class_='title')
-title = box.find('a').get_text()
-print(title)
-box = soup.find('article', class_='col-sm-5 hard-news-1')
-transcript = box.find('p', class_='summary').get_text(strip=True,separator=' ')
-print(transcript)
+        Noticia = block.find('p', class_='leadtext').get_text()
+        print('Noticia: ' + Noticia)
+        print()
