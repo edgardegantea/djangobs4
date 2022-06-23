@@ -65,12 +65,12 @@ class Website1(TemplateView):
             # print('Noticia: ' + Noticia)
             # print()
 
-            def get_context_data(self,t01=,t02=Noticia, **kwargs):
-                context = super(IndexView, self).get_context_data(**kwargs)
-                context['title'] = 'Extractor de noticias'
-                #context['data2'] = t01
-                context['data3'] = t02
-                return context
+    def get_context_data(self, t01=href, t02=Noticia, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+        context['title'] = 'Extractor de noticias'
+        context['tituloNoticia'] = t01
+        context['contenidoNoticia'] = t02
+        return context
 
 
 class Website2(TemplateView):
