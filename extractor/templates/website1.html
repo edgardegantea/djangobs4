@@ -8,29 +8,26 @@
     <div id="content">
 
         {% block section %}
-        <!-- section -->
-        <div class="section about_section layout_padding dash_bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="full">
-                            <div class="heading_main text_align_center">
-                                <h2>El sol de México</h2>
+            <!-- section -->
+            <div class="section about_section layout_padding dash_bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="full">
+                                <div class="heading_main text_align_center">
+                                    <h2>El sol de México</h2>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
 
-                {% block noticiasextraidas01 %}
-                    Noticias extraídas
-                    {% for noticia in noticias %}
-                        <div class="heading_small">
-                            {{ noticia }}
-                            <tr class="a">
-                        </div>
-                    {% endfor %}
-                {% endblock %}
+                    {% block noticiasextraidas01 %}
+                        Noticias extraídas
+                        {% for noticia in noticias %}
+                                {{ noticia }}
+                        {% endfor %}
+                    {% endblock %}
 
 
 
@@ -64,9 +61,9 @@
                             </div>
                         </div>
                     </div>
-                    </div>
-                    </div>
-                    <!-- end section -->
-                {% endblock %}
+                </div>
+            </div>
+            <!-- end section -->
+        {% endblock %}
 
 
