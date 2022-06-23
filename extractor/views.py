@@ -57,6 +57,13 @@ class Website1(TemplateView):
     blocks = layout.find_all(class_='stories-list sports-description', recursive=True)
     # print(len(blocks))
 
+    href = blocks.find('a', href=True)
+    noticia = blocks.find('p', class_='leadtext')
+
+
+
+
+    '''
     for block in blocks:
         for href in block.find('a', href=True):
             # print('Titulo: ' + href.get_text())
@@ -64,8 +71,9 @@ class Website1(TemplateView):
             Noticia = block.find('p', class_='leadtext').get_text()
             # print('Noticia: ' + Noticia)
             # print()
+    '''
 
-    def get_context_data(self, t01=href, t02=Noticia, **kwargs):
+    def get_context_data(self, t01=href, t02=noticia, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['title'] = 'Extractor de noticias'
         context['tituloNoticia'] = t01
