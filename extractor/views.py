@@ -6,15 +6,6 @@ import requests
 # Create your views here.
 from django.views.generic import TemplateView
 
-# extraer datos de una pagina
-website = 'https://elpais.com/mexico/'
-result = requests.get(website)
-content = result.text
-soup = BeautifulSoup(content, 'lxml')
-
-
-# print(soup.prettify())
-
 
 class IndexView(TemplateView):
     model = Contacto
@@ -55,21 +46,6 @@ class Website1(TemplateView):
             "noticias": soup.find(class_='stories-list sports-description').get_text()
         }
         return context
-
-
-
-    '''
-    def website1_view(request):
-        # create a dictionary
-        website = 'https://www.elsoldemexico.com.mx/mexico/sociedad/'
-        result = requests.get(website)
-        content = result.text
-        soup = BeautifulSoup(content, 'lxml')
-        context = {
-            "blocks": soup.find(class_='stories-list sports-description').get_text()
-        }
-        # return response
-        return render(request, "website1.html", context)'''
 
 
 class Website2(TemplateView):
