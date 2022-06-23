@@ -25,7 +25,9 @@
                     {% block noticiasextraidas01 %}
                         Noticias extraídas
                         {% for noticia in noticias %}
-                                {{ noticia }}
+                            <ul>
+                                <li>{{ noticia }}</li>
+                            </ul>
                         {% endfor %}
                     {% endblock %}
 
