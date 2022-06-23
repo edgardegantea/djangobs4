@@ -43,43 +43,18 @@ class Websites(TemplateView):
 
 
 class Website1(TemplateView):
-    template_name = 'website1.html'
-    # extraer datos de una pagina
-    website = 'https://www.elsoldemexico.com.mx/mexico/sociedad/'
-    result = requests.get(website)
-    content = result.text
-    soup = BeautifulSoup(content, 'lxml')
 
-    # Entrar a seccion que contiene bloques
-    layout = soup.find('div', class_="container")
-    # print(layout)
-    # Entrar a seccion que contiene articulos y mostrar su cantidad
-    blocks = layout.find_all(class_='stories-list sports-description', recursive=True)
-    # print(len(blocks))
-
-    href = blocks.find('a', href=True).get_text()
-    noticia = blocks.find('p', class_='leadtext').get_text()
-
-
-
-
-    '''
-    for block in blocks:
-        for href in block.find('a', href=True):
-            # print('Titulo: ' + href.get_text())
-
-            Noticia = block.find('p', class_='leadtext').get_text()
-            # print('Noticia: ' + Noticia)
-            # print()
-    '''
-
-    def get_context_data(self, t01=href, t02=noticia, **kwargs):
-        context = super(IndexView, self).get_context_data(**kwargs)
-        context['title'] = 'Extractor de noticias'
-        context['tituloNoticia'] = t01
-        context['contenidoNoticia'] = t02
-        return context
-
+    def website1_view(request):
+        # create a dictionary
+        website = 'https://www.elsoldemexico.com.mx/mexico/sociedad/'
+        result = requests.get(website)
+        content = result.text
+        soup = BeautifulSoup(content, 'lxml')
+        context = {
+            "blocks": soup.find(class_='stories-list sports-description').get_text()
+        }
+        # return response
+        return render(request, "website1.html", context)
 
 class Website2(TemplateView):
     template_name = 'website2.html'

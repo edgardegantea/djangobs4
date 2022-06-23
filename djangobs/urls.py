@@ -27,6 +27,10 @@ urlpatterns = [
     path('Sports03/', Sports03.as_view(), name='Cultura'),
     path('Sports04/', Sports03.as_view(), name='Cultura'),
     path('Prueba/', Prueba.as_view(), name='prueba'),
+
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
