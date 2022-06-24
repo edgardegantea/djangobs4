@@ -22,6 +22,18 @@
                             </div>
                         </div>
                     </div>
+
+
+                    {% block noticiasextraidas04 %}
+                        Noticias extraídas
+                        {% for noticia in noticias %}
+                            <ul>
+                                <li>{{ noticia }}<br><br></li>
+                            </ul>
+                        {% endfor %}
+                    {% endblock %}
+
+
                 <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                         <div class="full">

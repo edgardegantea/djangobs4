@@ -1,4 +1,3 @@
-
 import requests
 from bs4 import BeautifulSoup
 
@@ -10,18 +9,15 @@ soup = BeautifulSoup(content, 'lxml')
 
 # Entrar a seccion que contiene bloques
 layout = soup.find('div', class_="row advanced-grid")
-print(layout)
+# print(layout)
 # Entrar a seccion que contiene articulos y mostrar su cantidad
 blocks = layout.find_all(class_='container-fluid medium-promo', recursive=True)
-# print(len(blocks))
+print(len(blocks))
 
 for block in blocks:
-    titulo = block.find_all('a', href=True)
-    print(titulo.get_text())
+    for href in block.find_all('a', href=True):
+        print('Titulo: ' + href.get_text())
 
-    # for href in block.find_all('a', href=True):
-    #     print('Titulo: ' + href.get_text())
-    #
-    #     Noticia = block.find('p', class_='secondary-font__SecondaryFontStyles-x1tol1-0 dhTDff description-text').get_text()
-    #     print('Noticia: ' + Noticia)
-    #     print()
+        Noticia = block.find('p', class_='secondary-font__SecondaryFontStyles-x1tol1-0 dhTDff description-text').get_text()
+        print('Noticia: ' + Noticia)
+        print()

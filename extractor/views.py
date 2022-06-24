@@ -8,29 +8,14 @@ from django.views.generic import TemplateView
 
 
 class IndexView(TemplateView):
-    model = Contacto
-    website = 'https://elpais.com/mexico/'
-    result = requests.get(website)
-    content = result.text
-    soup = BeautifulSoup(content, 'lxml')
-    box = soup.find('section', class_='_g _g-md _g-o b b-d b--o')
-    title = box.find('a').get_text()
-    # scrip borra espacios en blanco al inicio y al final de una cadena de texto
-    transcript = box.find('p', class_='c_d').get_text(strip=True, separator=' ')
-
     template_name = 'index.html'
 
-    def get_context_data(self, t01=title, t02=transcript, **kwargs):
-        context = super(IndexView, self).get_context_data(**kwargs)
-        context['title'] = 'Extractor de noticias'
-        # context['data'] = soup
-        context['data2'] = t01
-        context['data3'] = t02
-        return context
 
 
 class Websites(TemplateView):
     template_name = 'websites.html'
+
+
 
 
 class Website1(TemplateView):
@@ -50,14 +35,50 @@ class Website1(TemplateView):
 
 class Website2(TemplateView):
     template_name = 'website2.html'
+    website = 'https://www.milenio.com'
+    result = requests.get(website)
+    content = result.text
+    soup = BeautifulSoup(content, 'lxml')
+    template_name = 'website2.html'
+
+    def get_context_data(self, soup=soup, **kwargs):
+        context = super(Website2, self).get_context_data(**kwargs)
+        context = {
+            "noticias": soup.find_all(class_='sn-base-base-noheading')
+        }
+        return context
 
 
 class Website3(TemplateView):
     template_name = 'website3.html'
+    website = 'https://elpais.com/mexico/'
+    result = requests.get(website)
+    content = result.text
+    soup = BeautifulSoup(content, 'lxml')
+    template_name = 'website3.html'
+
+    def get_context_data(self, soup=soup, **kwargs):
+        context = super(Website3, self).get_context_data(**kwargs)
+        context = {
+            "noticias": soup.find_all(class_='c c-d c--m-n')
+        }
+        return context
 
 
 class Website4(TemplateView):
     template_name = 'website4.html'
+    website = 'https://www.elfinanciero.com.mx'
+    result = requests.get(website)
+    content = result.text
+    soup = BeautifulSoup(content, 'lxml')
+    template_name = 'website4.html'
+
+    def get_context_data(self, soup=soup, **kwargs):
+        context = super(Website4, self).get_context_data(**kwargs)
+        context = {
+            "noticias": soup.find_all(class_='container-fluid medium-promo')
+        }
+        return context
 
 
 class Politics01(TemplateView):

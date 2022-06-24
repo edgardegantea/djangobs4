@@ -9,7 +9,7 @@ soup = BeautifulSoup(content, 'lxml')
 
 # Entrar a seccion que contiene bloques
 layout = soup.find('div', class_="b-f_w b_row-md _g _g-md")
-print(layout)
+# print(layout)
 
 # Entrar a seccion que contiene articulos y mostrar su cantidad
 blocks = layout.find_all(class_='c c-d c--m-n', recursive=True)
