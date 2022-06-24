@@ -28,6 +28,7 @@ class Website1(TemplateView):
     def get_context_data(self, soup=soup, **kwargs):
         context = super(Website1, self).get_context_data(**kwargs)
         context = {
+            # "noticias": soup.find_all(class_='stories-list sports-description')
             "noticias": soup.find_all(class_='stories-list sports-description')
         }
         return context
